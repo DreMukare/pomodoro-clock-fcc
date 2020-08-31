@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Header } from "../Components/Header";
 import { Session } from "./Session";
@@ -58,6 +58,7 @@ export const Pomodoro = (props) => {
   const [displayTitle, setDisplayTitle] = useState("Session");
   const [secondsLeft, setSecondsLeft] = useState(() => 25 * 60);
   const [clickTimes, setClickTimes] = useState(() => 0);
+  const guitar = useRef();
 
   const handleSeshInc = () => {
     if (seshLength < 60 && timerState === "not-running") {
@@ -108,7 +109,7 @@ export const Pomodoro = (props) => {
       countDown = setInterval(() => {
         setSecondsLeft(secondsLeft - 1);
       }, 1000);
-      // myAudio.current.play();
+      guitar.current.play();
       switchDisplayTitleAndState();
     } else {
       clearInterval(countDown);
@@ -123,6 +124,8 @@ export const Pomodoro = (props) => {
     setDisplayTitle("Session");
     setSecondsLeft(() => 25 * 60);
     setClickTimes(0);
+    guitar.current.pause();
+    guitar.current.currentTime = 0;
   };
 
   const start = () => {
@@ -189,6 +192,7 @@ export const Pomodoro = (props) => {
       <audio
         id="beep"
         preload="auto"
+        ref={guitar}
         src="https://sampleswap.org/samples-ghost/MELODIC%20LOOPS/GUITAR%20LOOPS/537[kb]077_echo-bright-guitar-melody.aif.mp3"
       />
     </div>
