@@ -189,7 +189,7 @@ export const Pomodoro = (props) => {
       <audio
         id="beep"
         preload="auto"
-        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+        src="https://sampleswap.org/samples-ghost/MELODIC%20LOOPS/GUITAR%20LOOPS/537[kb]077_echo-bright-guitar-melody.aif.mp3"
       />
     </div>
   );
